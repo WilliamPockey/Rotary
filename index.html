@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            position: relative;
+            width: 1000px;
+            height: 800px;
+            margin:0 auto;
+            background-color: rgb(230, 212, 212);
+            overflow: hidden;
+        }
+        .dino{
+            position: absolute;
+            width: 30px;
+            height: 60px;
+            left: 20px;
+            bottom: 0;
+            background-color: rgb(25, 160, 75);
+        }
+        .obstacle{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            left :500px;
+            bottom: 0;
+            background-color: rgb(234, 10, 10);
+            animation: block 3s linear infinite;
+        }
+        @keyframes block{
+            from{
+                left: 500px;
+            }to{
+                left: -50px;
+            }
+        }
+        @keyframes jump{
+            0%{
+                bottom: 0px;
+            }
+            30%{
+                bottom: 100px;
+            }
+            70%{
+                bottom: 100px;
+            }
+            100%{
+                bottom: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="dino"></div>
+        <div class="obstacle"></div>
+    </div>
+    <script>
+        var dino=document.querySelector('.dino');
+        window.addEventListener('keydown',function(e){
+            if(e.code=='Space'){
+                console.log('键盘空格按下');
+                dino.style.animation=jump 3s linear infinite;
+                setTimeout(() => {
+                dino.style.remove('animation: jump 1s linear infinite');
+            }, 1);
+            }
+        });
+
+    </script>
+</body>
+</html>
